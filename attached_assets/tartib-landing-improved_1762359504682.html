@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ترتيب - متتبع ترتيب المواقع الأول في السوق العربي | تحسين محركات البحث</title>
+    <meta name="description" content="أداة احترافية لتتبع ترتيب موقعك في جوجل. تحديثات يومية، تقارير مخصصة، دعم كامل للسوق العربي. ابدأ مجاناً الآن!">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - El Messiri -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'El Messiri', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header with CTA emphasis */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: padding 0.3s;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            background: linear-gradient(135deg, #8bc34a, #4caf50, #2e7d32);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: #4caf50;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #4caf50;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #4caf50;
+            cursor: pointer;
+        }
+
+        .header-cta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .cta-button-outline {
+            background: transparent;
+            color: #4caf50;
+            border: 2px solid #4caf50;
+            padding: 10px 25px;
+        }
+
+        .cta-button-outline:hover {
+            background: #4caf50;
+            color: white;
+        }
+
+        /* Hero Section - Improved */
+        .hero {
+            background: 
+                linear-gradient(135deg, rgba(139, 195, 74, 0.92) 0%, rgba(76, 175, 80, 0.95) 100%),
+                url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2000&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            background-size: 60px 60px;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero > .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 30px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-badge i {
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            color: #ffffff;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-weight: 700;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #ffeb3b, #ffc107);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .hero-cta-primary {
+            background: white;
+            color: #4caf50;
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+        }
+
+        .hero-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(0,0,0,0.3);
+        }
+
+        .hero-cta-secondary {
+            background: transparent;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
+        }
+
+        .hero-trust-indicators {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: white;
+        }
+
+        .trust-number {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .trust-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .trust-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Social Proof Section - NEW */
+        .social-proof {
+            background: white;
+            padding: 50px 0;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+        }
+
+        .social-proof-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .social-proof-text {
+            flex: 1;
+        }
+
+        .social-proof-text h3 {
+            font-size: 20px;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        .users-avatars {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-left: -12px;
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .avatar:first-child { margin-left: 0; }
+        .avatar:nth-child(1) { background: linear-gradient(135deg, #66bb6a, #43a047); }
+        .avatar:nth-child(2) { background: linear-gradient(135deg, #8bc34a, #689f38); }
+        .avatar:nth-child(3) { background: linear-gradient(135deg, #9ccc65, #7cb342); }
+        .avatar:nth-child(4) { background: linear-gradient(135deg, #aed581, #8bc34a); }
+        .avatar:nth-child(5) { background: linear-gradient(135deg, #c5e1a5, #9ccc65); }
+
+        .social-proof-stats {
+            display: flex;
+            gap: 40px;
+        }
+
+        .stat-badge {
+            text-align: center;
+        }
+
+        .stat-badge-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4caf50;
+        }
+
+        .stat-badge-label {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Video Demo Section - NEW */
+        .video-demo {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 100%);
+        }
+
+        .video-demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .video-demo-content h2 {
+            font-size: 42px;
+            color: #2e7d32;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .video-demo-content p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .video-demo-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .video-demo-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 17px;
+            color: #555;
+        }
+
+        .video-demo-features i {
+            color: #4caf50;
+            font-size: 20px;
+        }
+
+        .video-placeholder {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 16/9;
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(76, 175, 80, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .play-button i {
+            color: white;
+            font-size: 32px;
+            margin-right: -4px;
+        }
+
+        /* Key Benefits - Redesigned */
+        .key-benefits {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            color: #2e7d32;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fbe7 100%);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.15);
+            border-color: #8bc34a;
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .benefit-icon i {
+            font-size: 36px;
+            color: white;
+        }
+
+        .benefit-card h3 {
+            font-size: 22px;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Live Demo Section - NEW */
+        .live-demo {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .live-demo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            z-index: 0;
+        }
+
+        .live-demo > .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .live-demo h2 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .live-demo-subtitle {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+
+        .demo-interface {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .demo-input-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .demo-input-group input {
+            flex: 1;
+            padding: 18px 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'El Messiri', sans-serif;
+        }
+
+        .demo-input-group button {
+            padding: 18px 35px;
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: 'El Messiri', sans-serif;
+        }
+
+        .demo-results {
+            background: #f9fbe7;
+            padding: 30px;
+            border-radius: 15px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        /* Comparison Table - Improved */
+        .comparison {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table thead {
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+        }
+
+        .comparison-table th {
+            padding: 25px 20px;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .comparison-table th:first-child {
+            text-align: right;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: center;
+        }
+
+        .comparison-table td:first-child {
+            text-align: right;
+            font-weight: 600;
+            color: #2e7d32;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: #f9fbe7;
+        }
+
+        /* Testimonials - Enhanced */
+        .testimonials {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+        }
+
+        .testimonials-slider {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            color: #4caf50;
+            font-size: 48px;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            opacity: 0.2;
+        }
+
+        .testimonial-rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .testimonial-text {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .author-info h4 {
+            color: #2e7d32;
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+
+        .author-info p {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Pricing Preview - NEW */
+        .pricing-preview {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .pricing-cards-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card-preview {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fbe7 100%);
+            padding: 40px 30px;
+            border-radius: 25px;
+            text-align: center;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .pricing-card-preview:hover {
+            border-color: #4caf50;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.2);
+        }
+
+        .pricing-card-preview.featured {
+            border-color: #4caf50;
+            transform: scale(1.05);
+        }
+
+        .plan-name {
+            font-size: 24px;
+            color: #2e7d32;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .plan-price {
+            font-size: 48px;
+            color: #4caf50;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .plan-price span {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: right;
+        }
+
+        .plan-features li {
+            padding: 12px 0;
+            color: #555;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .plan-features i {
+            color: #4caf50;
+        }
+
+        /* FAQ - Improved */
+        .faq {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f9fbe7 0%, #f1f8e9 100%);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #2e7d32;
+            transition: background 0.3s;
+            font-size: 17px;
+        }
+
+        .faq-question:hover {
+            background: #f5f5f5;
+        }
+
+        .faq-question i {
+            color: #4caf50;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s;
+            padding: 0 30px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 30px 25px;
+        }
+
+        /* Final CTA - Enhanced */
+        .final-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .final-cta > .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .final-cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .cta-button-large {
+            padding: 20px 50px;
+            font-size: 20px;
+            border-radius: 35px;
+        }
+
+        /* Footer - Enhanced */
+        footer {
+            background: #1b5e20;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            padding-left: 20px;
+        }
+
+        .footer-brand h3 {
+            font-size: 28px;
+            background: linear-gradient(135deg, #8bc34a, #a5d6a7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            color: #c8e6c9;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: #4caf50;
+            transform: translateY(-3px);
+        }
+
+        .footer-section h4 {
+            color: #8bc34a;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-section a {
+            color: #c8e6c9;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+
+        .footer-section a:hover {
+            color: white;
+            padding-right: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(139, 195, 74, 0.3);
+            color: #c8e6c9;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-slider {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-cards-preview {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card-preview.featured {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-demo-container {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-slider {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                left: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav a {
+                margin: 10px 0;
+                padding: 10px;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .header-content {
+                position: relative;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .social-proof-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-proof-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .final-cta-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>ترتيب</h1>
+                </div>
+                <nav id="mainNav">
+                    <a href="#features">المميزات</a>
+                    <a href="#pricing">الأسعار</a>
+                    <a href="tartib-blog-page.html">المدونة</a>
+                    <a href="tartib-contact-page.html">تواصل معنا</a>
+                </nav>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-cta">
+                    <a href="tartib-pricing-page.html" class="cta-button-outline">الأسعار</a>
+                    <a href="#" class="cta-button">
+                        ابدأ مجاناً
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <i class="fas fa-crown"></i>
+                الأداة الأولى لتتبع الترتيب في السوق العربي
+            </div>
+            <h1>حسّن ترتيب موقعك في جوجل<br>وزد زياراتك بـ <span class="highlight">300%</span></h1>
+            <p class="hero-subtitle">تتبع دقيق لترتيب كلماتك المفتاحية مع تحديثات يومية تلقائية وتقارير احترافية قابلة للتخصيص</p>
+            
+            <div class="hero-cta-group">
+                <a href="#" class="hero-cta-primary">
+                    <i class="fas fa-rocket"></i>
+                    ابدأ تجربتك المجانية - 14 يوم
+                </a>
+                <a href="#demo" class="hero-cta-secondary">
+                    <i class="fas fa-play-circle"></i>
+                    شاهد عرض توضيحي
+                </a>
+            </div>
+
+            <div class="hero-trust-indicators">
+                <div class="trust-item">
+                    <div class="trust-number">+500</div>
+                    <div class="trust-label">عميل نشط</div>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <div class="trust-number">+10K</div>
+                    <div class="trust-label">كلمة متتبعة</div>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <div class="trust-number">99.9%</div>
+                    <div class="trust-label">وقت تشغيل</div>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <div class="trust-number">4.9/5</div>
+                    <div class="trust-label">تقييم العملاء</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="social-proof-content">
+                <div class="social-proof-text">
+                    <h3>موثوق به من قبل أكثر من 500 مسوق رقمي ووكالة في الوطن العربي</h3>
+                    <div class="users-avatars" style="margin-top: 20px;">
+                        <div class="avatar">أ</div>
+                        <div class="avatar">م</div>
+                        <div class="avatar">س</div>
+                        <div class="avatar">ف</div>
+                        <div class="avatar">ك</div>
+                        <div class="avatar">+495</div>
+                    </div>
+                </div>
+                <div class="social-proof-stats">
+                    <div class="stat-badge">
+                        <div class="stat-badge-number">24/7</div>
+                        <div class="stat-badge-label">مراقبة مستمرة</div>
+                    </div>
+                    <div class="stat-badge">
+                        <div class="stat-badge-number">100%</div>
+                        <div class="stat-badge-label">دعم عربي</div>
+                    </div>
+                    <div class="stat-badge">
+                        <div class="stat-badge-number">30 يوم</div>
+                        <div class="stat-badge-label">ضمان الاسترداد</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Demo Section -->
+    <section class="video-demo" id="demo">
+        <div class="container">
+            <div class="video-demo-container">
+                <div class="video-demo-content fade-in">
+                    <h2>شاهد ترتيب في العمل</h2>
+                    <p>اكتشف كيف يمكن لترتيب أن يساعدك على تتبع وتحسين ظهور موقعك في نتائج البحث بسهولة وفعالية.</p>
+                    
+                    <ul class="video-demo-features">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>واجهة سهلة الاستخدام بالعربية 100%</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>تقارير مرئية وتفاعلية في الوقت الفعلي</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>تنبيهات فورية عند تغير الترتيب</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>تكامل سلس مع أدواتك المفضلة</span>
+                        </li>
+                    </ul>
+
+                    <a href="#" class="cta-button" style="margin-top: 30px;">
+                        جرب الآن مجاناً
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+
+                <div class="video-placeholder fade-in">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Benefits -->
+    <section class="key-benefits" id="features">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">لماذا ترتيب؟</span>
+                <h2 class="section-title">كل ما تحتاجه لتحسين ترتيبك</h2>
+                <p class="section-description">أدوات قوية ومميزات شاملة تجعل تتبع وتحسين ترتيب موقعك أمراً سهلاً وفعالاً</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>تحديثات يومية تلقائية</h3>
+                    <p>تُحدّث جميع كلماتك المفتاحية تلقائياً كل 24 ساعة، مع إمكانية التحديث الفوري عند الطلب بشكل غير محدود.</p>
+                </div>
+
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>تقارير احترافية مخصصة</h3>
+                    <p>أنشئ تقارير مفصلة بشعارك وألوانك الخاصة، مثالية لتقديمها للعملاء أو الإدارة.</p>
+                </div>
+
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>دعم كامل للسوق العربي</h3>
+                    <p>تتبع دقيق لجميع دول الخليج والوطن العربي مع دعم البحث المحلي وحزمة الخرائط المحلية.</p>
+                </div>
+
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>تنبيهات ذكية فورية</h3>
+                    <p>احصل على إشعارات فورية عبر البريد عند حدوث تغييرات مهمة في ترتيب كلماتك المفتاحية.</p>
+                </div>
+
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>API قوي ومرن</h3>
+                    <p>تكامل سلس مع أنظمتك الحالية من خلال واجهة برمجة تطبيقات قوية وموثقة بشكل جيد.</p>
+                </div>
+
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>دعم فني متميز</h3>
+                    <p>فريق دعم عربي متاح للمساعدة في أي وقت، مع استجابة سريعة وحلول فعالة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo Interactive -->
+    <section class="live-demo">
+        <div class="container">
+            <h2 class="fade-in">جرب ترتيب مباشرة</h2>
+            <p class="live-demo-subtitle fade-in">اختبر قوة ترتيب في تتبع موقعك الآن</p>
+            
+            <div class="demo-interface fade-in">
+                <div class="demo-input-group">
+                    <input type="text" placeholder="أدخل نطاق موقعك (مثال: example.com)">
+                    <input type="text" placeholder="أدخل كلمة مفتاحية">
+                    <button>تتبع الآن</button>
+                </div>
+                <div class="demo-results">
+                    <p>أدخل معلومات موقعك أعلاه لرؤية نتيجة فورية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">المقارنة</span>
+                <h2 class="section-title">ترتيب vs المنافسون</h2>
+                <p class="section-description">اكتشف لماذا يختار المسوقون الأذكياء ترتيب</p>
+            </div>
+
+            <div class="comparison-table fade-in">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الميزة</th>
+                            <th>ترتيب</th>
+                            <th>المنافس أ</th>
+                            <th>المنافس ب</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>تحديثات يومية تلقائية</td>
+                            <td><i class="fas fa-check check-icon" style="color: #4caf50; font-size: 20px;"></i></td>
+                            <td><i class="fas fa-check check-icon" style="color: #4caf50; font-size: 20px;"></i></td>
+                            <td><i class="fas fa-times" style="color: #ccc; font-size: 20px;"></i></td>
+                        </tr>
+                        <tr>
+                            <td>فحوصات غير محدودة</td>
+                            <td><i class="fas fa-check check-icon" style="color: #4caf50; font-size: 20px;"></i></td>
+                            <td><i class="fas fa-times" style="color: #ccc; font-size: 20px;"></i></td>
+                            <td><i class="fas fa-times" style="color: #ccc; font-size: 20px;"></i></td>
+                        </tr>
+                        <tr>
+                            <td>واجهة عربية 100%</td>
+                            <td><i class="fas fa-check check-icon" style="color: #4caf50; font-size: 20px;"></i></td>
+                            <td><i class="fas fa-times" style="color: #ccc; font-size: 20px;"></i></td>
+                            <td><i class="fas fa-times" style="color: #ccc; font-size: 20px;"></i></td>
+                        </tr>
+                        <tr>
+                            <td>دعم السوق الخليجي</td>
+                            <td><i class="fas fa-check check-icon" style="color: #4caf50; font-size: 20px;"></i></td>
+                            <td><i class="fas fa-check check-icon" style="color: #4caf50; font-size: 20px;"></i></td>
+                            <td><i class="fas fa-times" style="color: #ccc; font-size: 20px;"></i></td>
+                        </tr>
+                        <tr>
+                            <td>تقارير بالشعار الخاص</td>
+                            <td><i class="fas fa-check check-icon" style="color: #4caf50; font-size: 20px;"></i></td>
+                            <td><i class="fas fa-times" style="color: #ccc; font-size: 20px;"></i></td>
+                            <td><i class="fas fa-check check-icon" style="color: #4caf50; font-size: 20px;"></i></td>
+                        </tr>
+                        <tr>
+                            <td>دعم عربي 24/7</td>
+                            <td><i class="fas fa-check check-icon" style="color: #4caf50; font-size: 20px;"></i></td>
+                            <td><i class="fas fa-times" style="color: #ccc; font-size: 20px;"></i></td>
+                            <td><i class="fas fa-times" style="color: #ccc; font-size: 20px;"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">آراء العملاء</span>
+                <h2 class="section-title">ماذا يقول عملاؤنا؟</h2>
+                <p class="section-description">انضم إلى مئات المسوقين الذين يثقون في ترتيب</p>
+            </div>
+
+            <div class="testimonials-slider">
+                <div class="testimonial-card fade-in">
+                    <i class="fas fa-quote-right testimonial-quote"></i>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"ترتيب غيّر طريقة عملنا تماماً. التقارير المخصصة وفرت علينا ساعات من العمل اليدوي، والعملاء منبهرون بالمستوى الاحترافي."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">أ</div>
+                        <div class="author-info">
+                            <h4>أحمد محمد</h4>
+                            <p>مدير تسويق رقمي - الرياض</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <i class="fas fa-quote-right testimonial-quote"></i>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"الدعم الفني باللغة العربية كان عامل حاسم بالنسبة لنا. فريق ترتيب متعاون جداً ويفهم احتياجات السوق العربي."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ف</div>
+                        <div class="author-info">
+                            <h4>فاطمة العلي</h4>
+                            <p>مستشارة SEO - دبي</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <i class="fas fa-quote-right testimonial-quote"></i>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"سهولة الاستخدام والدقة في النتائج جعلت ترتيب الأداة المفضلة لوكالتنا. نستخدمه لأكثر من 50 عميل بنجاح كبير."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">خ</div>
+                        <div class="author-info">
+                            <h4>خالد السعيد</h4>
+                            <p>مؤسس وكالة تسويق - جدة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Preview -->
+    <section class="pricing-preview" id="pricing">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">الأسعار</span>
+                <h2 class="section-title">خطط تناسب جميع الاحتياجات</h2>
+                <p class="section-description">اختر الباقة المناسبة لك - يمكنك الترقية أو التخفيض في أي وقت</p>
+            </div>
+
+            <div class="pricing-cards-preview">
+                <div class="pricing-card-preview fade-in">
+                    <h3 class="plan-name">المبتدئ</h3>
+                    <div class="plan-price">99 <span>ريال/شهر</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 25 كلمة مفتاحية</li>
+                        <li><i class="fas fa-check"></i> تحديثات يومية</li>
+                        <li><i class="fas fa-check"></i> موقع واحد</li>
+                        <li><i class="fas fa-check"></i> فحوصات غير محدودة</li>
+                    </ul>
+                    <a href="tartib-pricing-page.html" class="cta-button" style="width: 100%;">ابدأ الآن</a>
+                </div>
+
+                <div class="pricing-card-preview featured fade-in">
+                    <h3 class="plan-name">المحترف ⭐</h3>
+                    <div class="plan-price">299 <span>ريال/شهر</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 100 كلمة مفتاحية</li>
+                        <li><i class="fas fa-check"></i> تحديثات يومية</li>
+                        <li><i class="fas fa-check"></i> 5 مواقع</li>
+                        <li><i class="fas fa-check"></i> تقارير مخصصة</li>
+                        <li><i class="fas fa-check"></i> API وصول</li>
+                    </ul>
+                    <a href="tartib-pricing-page.html" class="cta-button" style="width: 100%;">ابدأ الآن</a>
+                </div>
+
+                <div class="pricing-card-preview fade-in">
+                    <h3 class="plan-name">المؤسسات</h3>
+                    <div class="plan-price">599 <span>ريال/شهر</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 500 كلمة مفتاحية</li>
+                        <li><i class="fas fa-check"></i> مواقع غير محدودة</li>
+                        <li><i class="fas fa-check"></i> مدير حساب مخصص</li>
+                        <li><i class="fas fa-check"></i> دعم 24/7</li>
+                    </ul>
+                    <a href="tartib-pricing-page.html" class="cta-button" style="width: 100%;">تواصل معنا</a>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 30px; color: #666;">
+                <a href="tartib-pricing-page.html" style="color: #4caf50; font-weight: 600; text-decoration: none;">
+                    عرض جميع الميزات والأسعار التفصيلية <i class="fas fa-arrow-left"></i>
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">الأسئلة الشائعة</span>
+                <h2 class="section-title">لديك أسئلة؟ لدينا إجابات</h2>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>كم عدد الكلمات المفتاحية التي يمكنني تتبعها؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        يعتمد ذلك على الباقة التي تختارها. نبدأ من 25 كلمة في باقة المبتدئ وصولاً إلى 500 كلمة في باقة المؤسسات.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>هل يمكنني تجربة الخدمة مجاناً؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم! نوفر فترة تجريبية مجانية لمدة 14 يوم لجميع الباقات بدون الحاجة لبطاقة ائتمان.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>كم مرة يتم تحديث البيانات؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        يتم تحديث جميع الكلمات المفتاحية تلقائياً كل 24 ساعة، مع إمكانية التحديث الفوري عند الطلب بشكل غير محدود.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>هل تدعمون البحث المحلي في الدول العربية؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، ندعم بشكل كامل جميع الدول العربية ودول الخليج مع إمكانية تحديد الموقع الجغرافي بدقة.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>هل يمكنني إلغاء الاشتراك في أي وقت؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        بالتأكيد! يمكنك إلغاء اشتراكك في أي وقت من لوحة التحكم بنقرة واحدة، بدون أي رسوم إضافية.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>هل تقدمون خصومات للمؤسسات والوكالات؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، لدينا باقات مخصصة للمؤسسات والوكالات بأسعار تنافسية. تواصل معنا للحصول على عرض خاص.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>جاهز لتحسين ترتيب موقعك؟</h2>
+            <p>انضم إلى مئات المسوقين الذين يستخدمون ترتيب لتحقيق نتائج مذهلة</p>
+            <div class="final-cta-buttons">
+                <a href="#" class="hero-cta-primary cta-button-large">
+                    <i class="fas fa-rocket"></i>
+                    ابدأ تجربتك المجانية الآن
+                </a>
+                <a href="tartib-contact-page.html" class="hero-cta-secondary cta-button-large">
+                    <i class="fas fa-comments"></i>
+                    تحدث مع فريق المبيعات
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>ترتيب</h3>
+                    <p>أداة احترافية لتتبع ترتيب المواقع في نتائج محركات البحث، مصممة خصيصاً للسوق العربي.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>المنتج</h4>
+                    <a href="#features">المميزات</a>
+                    <a href="tartib-pricing-page.html">الأسعار</a>
+                    <a href="#">واجهة برمجة التطبيقات</a>
+                    <a href="#">التكاملات</a>
+                    <a href="#">التحديثات</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>الموارد</h4>
+                    <a href="tartib-blog-page.html">المدونة</a>
+                    <a href="#">مركز المساعدة</a>
+                    <a href="#">الدروس التعليمية</a>
+                    <a href="#">الوثائق</a>
+                    <a href="#">حالات النجاح</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>الشركة</h4>
+                    <a href="#">من نحن</a>
+                    <a href="tartib-contact-page.html">تواصل معنا</a>
+                    <a href="#">الوظائف</a>
+                    <a href="#">سياسة الخصوصية</a>
+                    <a href="#">شروط الاستخدام</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 ترتيب. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                const icon = this.querySelector('i');
+                if (mainNav.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+        // Close menu when clicking on a link
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+                if (menuToggle) {
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // FAQ Toggle
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+                
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Demo functionality
+        const playButton = document.querySelector('.play-button');
+        if (playButton) {
+            playButton.addEventListener('click', function() {
+                alert('سيتم تشغيل الفيديو التوضيحي قريباً!');
+            });
+        }
+    </script>
+</body>
+</html>

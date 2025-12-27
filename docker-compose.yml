@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    restart: always
+    ports:
+      - "80:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+      # Add other environment variables here, e.g.:
+      - SERPER_API_KEY=your_key_here
+      - SESSION_SECRET=change_me_in_production
+      - ADMIN_EMAIL=admin@example.com
+      - ADMIN_PASSWORD=admin123
+    volumes:
+      # Persist the SQLite database
+      - ./sqlite.db:/app/sqlite.db

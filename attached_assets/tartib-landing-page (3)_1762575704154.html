@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ترتيب - متتبع ترتيب المواقع في نتائج البحث</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - El Messiri -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'El Messiri', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            background: linear-gradient(135deg, #8bc34a, #4caf50, #2e7d32);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4caf50;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #4caf50;
+            cursor: pointer;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: 
+                linear-gradient(135deg, rgba(139, 195, 74, 0.85) 0%, rgba(76, 175, 80, 0.90) 100%),
+                url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2000&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            background-size: 60px 60px;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero > .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-feature {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-feature span {
+            font-size: 18px;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .hero-feature span i {
+            color: #4caf50;
+        }
+
+        .users-section {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .users-avatars {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-right: -15px;
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+
+        .avatar:hover {
+            transform: scale(1.1) translateY(-5px);
+            z-index: 10;
+        }
+
+        .avatar:nth-child(1) { background: linear-gradient(135deg, #66bb6a, #43a047); }
+        .avatar:nth-child(2) { background: linear-gradient(135deg, #8bc34a, #689f38); }
+        .avatar:nth-child(3) { background: linear-gradient(135deg, #9ccc65, #7cb342); }
+        .avatar:nth-child(4) { background: linear-gradient(135deg, #aed581, #8bc34a); }
+        .avatar:nth-child(5) { background: linear-gradient(135deg, #c5e1a5, #9ccc65); }
+
+        .users-text {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .users-text span {
+            color: #ffffff;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            color: #2e7d32;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f9fbe7 0%, #f1f8e9 100%);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-right: 4px solid #8bc34a;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 195, 74, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #4caf50;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 30px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .step-card h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .step-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.2);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #4caf50;
+            transform: scale(1.05);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            font-size: 28px;
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        .pricing-card .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #4caf50;
+            margin: 20px 0;
+        }
+
+        .pricing-card .price span {
+            font-size: 20px;
+            color: #666;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: right;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: #555;
+        }
+
+        .pricing-features li i {
+            color: #4caf50;
+            margin-left: 10px;
+        }
+
+        .pricing-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pricing-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Dashboard Preview Section */
+        .dashboard-preview {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .preview-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .preview-content h3 {
+            font-size: 32px;
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+
+        .preview-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .preview-features {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .preview-features li {
+            padding: 12px 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .preview-features li i {
+            color: #4caf50;
+            font-size: 20px;
+        }
+
+        .preview-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 100%);
+            padding: 20px;
+        }
+
+        .dashboard-mockup {
+            width: 100%;
+            height: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .mockup-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .mockup-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+        }
+
+        .mockup-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mockup-chart {
+            flex: 1;
+            background: linear-gradient(to top, #8bc34a 0%, #8bc34a 20%, #c8e6c9 20%, #c8e6c9 40%, #4caf50 40%, #4caf50 60%, #a5d6a7 60%, #a5d6a7 80%, #66bb6a 80%, #66bb6a 100%);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mockup-chart::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+            background-size: 20px 20px;
+        }
+
+        .mockup-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .mockup-stat {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .mockup-stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4caf50;
+        }
+
+        .mockup-stat-label {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f9fbe7 0%, #f1f8e9 100%);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #2e7d32;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #f5f5f5;
+        }
+
+        .faq-question i {
+            color: #4caf50;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s;
+            padding: 0 30px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 30px 25px;
+        }
+
+        /* Trust Badges */
+        .trust-section {
+            padding: 60px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .trust-badge i {
+            font-size: 36px;
+            color: #4caf50;
+        }
+
+        .trust-badge-text {
+            text-align: right;
+        }
+
+        .trust-badge-title {
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        .trust-badge-subtitle {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #4caf50;
+            margin-top: 15px;
+        }
+
+        .testimonial-role {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .cta-button-light {
+            background: white;
+            color: #4caf50;
+            padding: 15px 40px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button-light:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1b5e20;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: #8bc34a;
+            margin-bottom: 15px;
+        }
+
+        .footer-section a {
+            color: #c8e6c9;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #4caf50;
+            color: #c8e6c9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                left: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav a {
+                margin: 10px 0;
+                padding: 10px;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .header-content {
+                position: relative;
+            }
+
+            .users-avatars {
+                flex-wrap: wrap;
+            }
+
+            .avatar {
+                margin-right: -10px;
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+            }
+
+            .preview-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .trust-badges {
+                gap: 20px;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>ترتيب</h1>
+                </div>
+                <nav id="mainNav">
+                    <a href="#features">المميزات</a>
+                    <a href="#pricing">الأسعار</a>
+                    <a href="#testimonials">آراء العملاء</a>
+                    <a href="#contact">تواصل معنا</a>
+                </nav>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="#" class="cta-button">ابدأ مجاناً</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>تتبع ترتيب موقعك في نتائج البحث<br>بدقة وسهولة</h2>
+            <p>تحديثات يومية لجميع كلماتك المفتاحية. فحوصات غير محدودة عند الطلب. تقارير متقدمة لتنمية زياراتك.</p>
+            <a href="#" class="cta-button" style="font-size: 20px; padding: 15px 40px; background: white; color: #4caf50; box-shadow: 0 5px 25px rgba(0,0,0,0.2);">جرب ترتيب الآن - مجاناً</a>
+            
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <span><i class="fas fa-check-circle"></i> تحديثات يومية تلقائية</span>
+                </div>
+                <div class="hero-feature">
+                    <span><i class="fas fa-check-circle"></i> تقارير احترافية قابلة للتخصيص</span>
+                </div>
+                <div class="hero-feature">
+                    <span><i class="fas fa-check-circle"></i> دعم كامل لجميع دول الخليج والعالم العربي</span>
+                </div>
+            </div>
+
+            <div class="users-section">
+                <div class="users-avatars">
+                    <div class="avatar">أ</div>
+                    <div class="avatar">م</div>
+                    <div class="avatar">س</div>
+                    <div class="avatar">ف</div>
+                    <div class="avatar">ك</div>
+                </div>
+                <div class="users-text">
+                    انضم إلى <span>500+ عميل</span> يستخدمون ترتيب يومياً
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">كلمة مفتاحية متتبعة</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">عميل راضٍ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">وقت التشغيل</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">مراقبة مستمرة</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">كيف يعمل ترتيب؟</h2>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>أضف كلماتك المفتاحية</h3>
+                    <p>قم بإضافة الكلمات المفتاحية التي تريد تتبع ترتيبها في محركات البحث. يمكنك إضافة عدد غير محدود من الكلمات.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>اختر الموقع الجغرافي</h3>
+                    <p>حدد الدولة أو المدينة التي تريد تتبع النتائج منها. دعم كامل لجميع الدول العربية ودول الخليج.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>احصل على التقارير</h3>
+                    <p>تابع تحديثات يومية تلقائية واحصل على تقارير مفصلة عن أداء كلماتك المفتاحية وتطور ترتيبك.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>حسّن ترتيبك</h3>
+                    <p>استخدم البيانات والرؤى لتحسين استراتيجية SEO الخاصة بك وزيادة ظهور موقعك في نتائج البحث.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">مميزات ترتيب التي ستحبها</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>تحديثات يومية تلقائية</h3>
+                    <p>سيقوم متتبع ترتيب المواقع بتحديث مواضع كلماتك المفتاحية كل 24 ساعة، مما يضمن أن البيانات التي تراها دائماً محدثة. في لوحة التحكم، ستجد أحدث النتائج بالإضافة إلى أرشيف لأدائك السابق.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>تقارير فورية قابلة للتخصيص</h3>
+                    <p>أنشئ تقارير فورية أو اختر التسليم التلقائي إلى بريدك الإلكتروني يومياً أو أسبوعياً أو شهرياً. هل تحتاج لتقديم تقارير لعملائك؟ قم بتخصيصها بشعارك وألوان شركتك لتوفير لمسة احترافية وشخصية.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>فحوصات غير محدودة عند الطلب</h3>
+                    <p>يتم تحديث متتبع الكلمات المفتاحية تلقائياً يومياً بحيث تكون بياناتك دقيقة وفي الوقت المناسب. هل تحتاج إلى ترتيب محدث للتو؟ يمكنك تحديث متتبع الترتيب عند الطلب، بالقدر الذي تريده.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-globe-americas"></i></div>
+                    <h3>دعم كامل لتحسين محركات البحث المحلية</h3>
+                    <p>يتيح لك اختيار نطاق جوجل الخاص بدولة معينة، والبحث من موقع جغرافي محدد، وتضمين حزمة الخرائط المحلية في نتائجك. مثالي للسوق العربي والخليجي.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bell"></i></div>
+                    <h3>تنبيهات مخصصة ذكية</h3>
+                    <p>ابقَ استباقياً مع ميزة "التنبيهات المخصصة". ترسل هذه الأداة تنبيهاً عبر البريد الإلكتروني عند حدوث تغييرات محددة في ترتيبك، مما يتيح لك الاستجابة السريعة للتقلبات في أداء تحسين محركات البحث.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>واجهة برمجة تطبيقات قوية</h3>
+                    <p>استفد من قوة واجهة برمجة التطبيقات API للتكامل السلس والتفاعل مع أنظمتك الحالية. توفر وصولاً في الوقت الفعلي إلى بيانات ترتيب كلماتك المفتاحية، مما يتيح لك دمج الرؤى في تطبيقاتك الخاصة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview Section -->
+    <section class="dashboard-preview">
+        <div class="container">
+            <div class="preview-container">
+                <div class="preview-content">
+                    <h3>لوحة تحكم سهلة وقوية</h3>
+                    <p>تتبع جميع كلماتك المفتاحية من مكان واحد مع لوحة تحكم بديهية وسهلة الاستخدام. شاهد تقدمك بوضوح من خلال الرسوم البيانية والإحصائيات التفصيلية.</p>
+                    <ul class="preview-features">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>رسوم بيانية تفاعلية لتتبع التقدم</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>مقارنة الأداء بين فترات زمنية مختلفة</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>تصفية وترتيب متقدم للبيانات</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>تصدير التقارير بصيغ متعددة</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="preview-image">
+                    <div class="dashboard-mockup">
+                        <div class="mockup-header">
+                            <div class="mockup-dot"></div>
+                            <div class="mockup-dot"></div>
+                            <div class="mockup-dot"></div>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="mockup-chart"></div>
+                            <div class="mockup-stats">
+                                <div class="mockup-stat">
+                                    <div class="mockup-stat-value">156</div>
+                                    <div class="mockup-stat-label">كلمات متتبعة</div>
+                                </div>
+                                <div class="mockup-stat">
+                                    <div class="mockup-stat-value">+18%</div>
+                                    <div class="mockup-stat-label">تحسن الترتيب</div>
+                                </div>
+                                <div class="mockup-stat">
+                                    <div class="mockup-stat-value">3.2K</div>
+                                    <div class="mockup-stat-label">زيارات جديدة</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">ماذا يقول عملاؤنا؟</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"ترتيب هو أفضل أداة لتتبع ترتيب المواقع في السوق العربي. سهل الاستخدام وبأسعار معقولة جداً."</p>
+                    <div class="testimonial-author">أحمد محمد</div>
+                    <div class="testimonial-role">مدير تسويق رقمي</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p>"التقارير المخصصة وفرت علي الكثير من الوقت. الآن أستطيع إرسال تقارير احترافية لعملائي بنقرة واحدة."</p>
+                    <div class="testimonial-author">فاطمة العلي</div>
+                    <div class="testimonial-role">مستشارة SEO</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p>"الدعم الممتاز والنتائج الدقيقة جعلت ترتيب الخيار الأول لوكالتنا في متابعة جميع مشاريعنا."</p>
+                    <div class="testimonial-author">خالد السعيد</div>
+                    <div class="testimonial-role">مؤسس وكالة تسويق</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p>"التحديثات اليومية والتنبيهات الفورية ساعدتني في اكتشاف المشاكل وحلها بسرعة. أداة لا غنى عنها!"</p>
+                    <div class="testimonial-author">سارة أحمد</div>
+                    <div class="testimonial-role">مديرة محتوى</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p>"بعد تجربة عدة أدوات، ترتيب هو الأسهل والأكثر فعالية. واجهة عربية رائعة ودعم ممتاز."</p>
+                    <div class="testimonial-author">عمر حسن</div>
+                    <div class="testimonial-role">خبير SEO</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p>"السعر المناسب والمميزات الكاملة جعلت ترتيب الحل المثالي لمتابعة أكثر من 50 موقع لعملائنا."</p>
+                    <div class="testimonial-author">ليلى محمود</div>
+                    <div class="testimonial-role">مديرة وكالة رقمية</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">خطط تناسب جميع الاحتياجات</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>المبتدئ</h3>
+                    <div class="price">مجاناً<span></span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 10 كلمات مفتاحية</li>
+                        <li><i class="fas fa-check"></i> تحديث يومي</li>
+                        <li><i class="fas fa-check"></i> تقارير أساسية</li>
+                        <li><i class="fas fa-check"></i> دعم عبر البريد</li>
+                        <li><i class="fas fa-check"></i> موقع واحد</li>
+                    </ul>
+                    <button class="pricing-button">ابدأ مجاناً</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">الأكثر شعبية</div>
+                    <h3>المحترف</h3>
+                    <div class="price">299 ريال<span>/شهرياً</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 100 كلمة مفتاحية</li>
+                        <li><i class="fas fa-check"></i> تحديث يومي</li>
+                        <li><i class="fas fa-check"></i> تقارير متقدمة</li>
+                        <li><i class="fas fa-check"></i> تنبيهات مخصصة</li>
+                        <li><i class="fas fa-check"></i> 5 مواقع</li>
+                        <li><i class="fas fa-check"></i> تقارير بالشعار الخاص</li>
+                        <li><i class="fas fa-check"></i> API وصول</li>
+                        <li><i class="fas fa-check"></i> دعم أولوية</li>
+                    </ul>
+                    <button class="pricing-button">اشترك الآن</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>المؤسسات</h3>
+                    <div class="price">999 ريال<span>/شهرياً</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> كلمات غير محدودة</li>
+                        <li><i class="fas fa-check"></i> تحديث كل ساعة</li>
+                        <li><i class="fas fa-check"></i> تقارير مخصصة</li>
+                        <li><i class="fas fa-check"></i> تنبيهات متقدمة</li>
+                        <li><i class="fas fa-check"></i> مواقع غير محدودة</li>
+                        <li><i class="fas fa-check"></i> مدير حساب مخصص</li>
+                        <li><i class="fas fa-check"></i> API متقدم</li>
+                        <li><i class="fas fa-check"></i> دعم 24/7</li>
+                    </ul>
+                    <button class="pricing-button">تواصل معنا</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <h3 style="color: #2e7d32; margin-bottom: 20px;">لماذا يثق بنا العملاء؟</h3>
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="trust-badge-text">
+                        <div class="trust-badge-title">أمان وخصوصية</div>
+                        <div class="trust-badge-subtitle">حماية SSL 256-bit</div>
+                    </div>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-clock"></i>
+                    <div class="trust-badge-text">
+                        <div class="trust-badge-title">متوفر دائماً</div>
+                        <div class="trust-badge-subtitle">وقت تشغيل 99.9%</div>
+                    </div>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-headset"></i>
+                    <div class="trust-badge-text">
+                        <div class="trust-badge-title">دعم فني ممتاز</div>
+                        <div class="trust-badge-subtitle">استجابة خلال ساعة</div>
+                    </div>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-award"></i>
+                    <div class="trust-badge-text">
+                        <div class="trust-badge-title">جودة مضمونة</div>
+                        <div class="trust-badge-subtitle">تقييم 4.9/5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">الأسئلة الشائعة</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كم عدد الكلمات المفتاحية التي يمكنني تتبعها؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        يعتمد ذلك على الباقة التي تختارها. الباقة المجانية تتيح لك تتبع 10 كلمات، بينما الباقة المحترفة تتيح 100 كلمة، والباقة المؤسسية توفر كلمات غير محدودة.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كم مرة يتم تحديث البيانات؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        يتم تحديث جميع الكلمات المفتاحية تلقائياً كل 24 ساعة. كما يمكنك طلب تحديث فوري في أي وقت بشكل غير محدود في جميع الباقات.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل يدعم ترتيب البحث المحلي في الدول العربية؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، ترتيب يدعم بشكل كامل جميع الدول العربية ودول الخليج. يمكنك اختيار الموقع الجغرافي المحدد والحصول على نتائج دقيقة لكل منطقة.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل يمكنني تخصيص التقارير بشعار شركتي؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، في الباقة المحترفة والمؤسسية يمكنك تخصيص التقارير بشعارك وألوان شركتك، مما يجعلها مثالية لتقديمها للعملاء.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل هناك فترة تجريبية مجانية؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، نوفر فترة تجريبية مجانية لمدة 14 يوم لجميع الباقات المدفوعة. لا حاجة لبطاقة ائتمان للتجربة.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كيف يمكنني إلغاء الاشتراك؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        يمكنك إلغاء اشتراكك في أي وقت من لوحة التحكم بنقرة واحدة. لن يتم تحصيل أي رسوم إضافية بعد الإلغاء.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>جاهز لتحسين ترتيب موقعك؟</h2>
+            <p>ابدأ اليوم مع ترتيب واحصل على نتائج دقيقة ومحدثة لكلماتك المفتاحية</p>
+            <a href="#" class="cta-button-light">ابدأ الآن - تجربة مجانية 14 يوم</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ترتيب</h3>
+                    <p>أداة احترافية لتتبع ترتيب المواقع في نتائج محركات البحث، مصممة خصيصاً للسوق العربي.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>المنتج</h3>
+                    <a href="#">المميزات</a>
+                    <a href="#">الأسعار</a>
+                    <a href="#">واجهة برمجة التطبيقات</a>
+                    <a href="#">التكاملات</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>الموارد</h3>
+                    <a href="#">المدونة</a>
+                    <a href="#">مركز المساعدة</a>
+                    <a href="#">الدروس التعليمية</a>
+                    <a href="#">الوثائق</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>الشركة</h3>
+                    <a href="#">من نحن</a>
+                    <a href="#">تواصل معنا</a>
+                    <a href="#">سياسة الخصوصية</a>
+                    <a href="#">شروط الاستخدام</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 ترتيب. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            const icon = this.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // FAQ Toggle
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
